@@ -28,7 +28,6 @@ table td:first-child {border-left:0;font-family: 'Raleway', sans-serif !importan
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
-  line-height: 1;
 }
 
 .ai-google-scholar:before {
