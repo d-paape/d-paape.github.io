@@ -4,8 +4,8 @@
 div {font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em;
   height:auto;
   padding:.1em;}
-body {background-color: #FFFFFF; margin-top:25px; width: 100%; font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
-p {margin-right: 5%; margin-left: 5%;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
+body {background-color: #FFFFFF; margin: 10% 10% 10% 10%; font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
+p {margin: 10% 10% 10% 10%;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
 table {border: none; margin: 0px 0px 0px 0px; font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
 table td {border-left:solid 1% transparent;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
 table td:first-child {border-left:0;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
