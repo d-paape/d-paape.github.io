@@ -1,14 +1,19 @@
 @RalewayWebfontPath: "./font";
 @RalewayWebfontName: "Raleway";
 
-div {font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em;
-  height:auto;
-  padding:.1em;}
-body {background-color: #FFFFFF; margin: 10% 10% 10% 10%; font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
-p {margin: 10% 10% 10% 10%;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
-table {border: none; margin: 0px 0px 0px 0px; font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
-table td {border-left:solid 1% transparent;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
-table td:first-child {border-left:0;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1.1em}
+body { background-color: #FFFFFF; margin: 10% 10% 10% 10%; font-family: 'Raleway', sans-serif !important; font-style: normal; font-size: 40px; }
+
+div { font-family: 'Raleway', sans-serif !important; font-style: normal; font-size: 1em;
+  height: auto;
+  padding: .1em; }
+p { margin: 0.5em 0; font-family: 'Raleway', sans-serif !important; font-style: normal; font-size: 1em; }
+table {border: none; margin: 0px 0px 0px 0px; font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1rem}
+table td {border-left:solid 1% transparent;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1rem}
+table td:first-child {border-left:0;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1rem}
+
+ul, ol {
+    font-size: inherit !important;
+}
 
 @font-face {
     font-family: 'Academicons';
