@@ -1,90 +1,304 @@
-@RalewayWebfontPath: "./font";
-@RalewayWebfontName: "Raleway";
+/* ============================================================
+   Raleway loaded locally — font-face declarations preserved
+   ============================================================ */
 
-body { background-color: #FFFFFF; margin: 10% 10% 10% 10%; font-family: 'Raleway', sans-serif !important; font-style: normal; font-size: 40px; }
-
-div { font-family: 'Raleway', sans-serif !important; font-style: normal; font-size: 1em;
-  height: auto;
-  padding: .1em; }
-p { margin: 0.5em 0; font-family: 'Raleway', sans-serif !important; font-style: normal; font-size: 1em; }
-table {border: none; margin: 0px 0px 0px 0px; font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1rem}
-table td {border-left:solid 1% transparent;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1rem}
-table td:first-child {border-left:0;font-family: 'Raleway', sans-serif !important;font-style:normal;font-size: 1rem}
-
-ul, ol {
-    font-size: inherit !important;
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./Raleway-Regular.woff2') format('woff2'),
+         url('./Raleway-Regular.woff')  format('woff');
+}
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('./Raleway-SemiBold.woff2') format('woff2'),
+         url('./Raleway-SemiBold.woff')  format('woff');
+}
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('./Raleway-Bold.woff2') format('woff2'),
+         url('./Raleway-Bold.woff')  format('woff');
 }
 
+/* Academicons — paths unchanged from original */
 @font-face {
     font-family: 'Academicons';
     font-style: normal;
     font-weight: 400;
     font-display: block;
-    src:url('./academicons.eot');
-    src:url('./academicons.eot') format('embedded-opentype'),
-        url('./academicons.ttf') format('truetype'),
-        url('./academicons.woff') format('woff'),
-        url('./academicons.svg') format('svg');
+    src: url('./academicons.eot');
+    src: url('./academicons.eot') format('embedded-opentype'),
+         url('./academicons.ttf')  format('truetype'),
+         url('./academicons.woff') format('woff'),
+         url('./academicons.svg')  format('svg');
 }
+
+
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root {
+    --font-main:       'Raleway', sans-serif;
+
+    --color-bg:        #fafaf8;
+
+    --color-surface:   #ffffff;
+    --color-text:      #1a1a1a;
+    --color-muted:     #5a5a5a;
+    --color-rule:      #d8d4cc;
+    --color-accent:    #2a5caa;   /* cool academic blue */
+    --color-accent-hv: #1a3f7a;
+
+    --space-page-h:    clamp(1.5rem, 8vw, 6rem);
+    --space-section:   2.5rem;
+
+    --line-height:     1.72;
+    --max-prose:       68ch;
+}
+
+
+/* ============================================================
+   Reset / base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    font-size: 18px; /* explicit px overrides Bootstrap 3's 14px root */
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--line-height);
+    margin: 0;
+    padding: 3rem var(--space-page-h) 5rem;
+}
+
+
+/* ============================================================
+   Bootstrap container overrides
+   (Bootstrap 3 is still loaded; we override its gutter/width)
+   ============================================================ */
+.container {
+    width: 100%;
+    max-width: 960px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row { margin-left: 0; margin-right: 0; }
+
+[class*="col-"] {
+    padding-left: 0;
+    padding-right: 1.5rem;
+}
+[class*="col-"]:last-child { padding-right: 0; }
+
+
+/* ============================================================
+   Typography
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-main);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: 0.4em;
+    color: var(--color-text);
+}
+
+h2 {
+    font-size: 1.45rem;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+/* Name / header h2 keeps uppercase but is larger */
+.col-sm-6 h2:first-child {
+    font-size: 1.75rem;
+    text-transform: none;
+    color: var(--color-text);
+    letter-spacing: 0;
+}
+
+p {
+    margin: 0 0 0.85em;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    max-width: var(--max-prose);
+}
+
+/* Contact block in the header column */
+.col-sm-6 > p:first-of-type {
+    line-height: 1.8;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+}
+
+
+/* ============================================================
+   Links
+   ============================================================ */
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.18s ease, border-color 0.18s ease;
+}
+a:hover, a:focus {
+    color: var(--color-accent-hv);
+    border-bottom-color: var(--color-accent-hv);
+    outline: none;
+}
+
+
+/* ============================================================
+   Horizontal rules / section dividers
+   ============================================================ */
+hr {
+    border: none;
+    border-top: 1px solid var(--color-rule);
+    margin: var(--space-section) 0;
+}
+
+
+/* ============================================================
+   Lists
+   ============================================================ */
+ul, ol {
+    font-size: 1rem;
+    font-family: var(--font-main);
+    padding-left: 1.35em;
+    margin: 0 0 0.5em;
+    max-width: var(--max-prose);
+}
+
+li {
+    margin-bottom: 0.55em;
+    line-height: var(--line-height);
+}
+
+/* Nested lists (teaching section) */
+li > ul, li > ol {
+    margin-top: 0.3em;
+    margin-bottom: 0.1em;
+}
+
+
+/* ============================================================
+   Tables
+   ============================================================ */
+table {
+    border: none;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    border-collapse: collapse;
+}
+table td {
+    border-left: 1px solid transparent;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    padding: 0.15em 0.5em 0.15em 0;
+    vertical-align: top;
+}
+table td:first-child { border-left: 0; padding-left: 0; }
+
+
+/* ============================================================
+   Profile photo
+   ============================================================ */
+img {
+    clip-path: ellipse(50% 50%);
+    display: block;
+    max-width: 100%;
+    height: auto;
+    /* subtle drop-shadow behind the oval */
+    filter: drop-shadow(0 4px 14px rgba(0,0,0,0.12));
+    transition: filter 0.3s ease;
+}
+img:hover { filter: drop-shadow(0 6px 20px rgba(0,0,0,0.18)); }
+
+
+/* ============================================================
+   Academicons / icon links
+   ============================================================ */
 .ai {
-  font-family: 'Academicons';
-  font-weight: 400;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
+    font-family: 'Academicons';
+    font-weight: 400;
+    -moz-osx-font-smoothing:  grayscale;
+    -webkit-font-smoothing:   antialiased;
+    display: inline-block;
+    font-style:   normal;
+    font-variant: normal;
+    text-rendering: auto;
 }
 
-.ai-google-scholar:before {
-  content: "\e9d4";
-}
-.ai-google-scholar-square:before {
-  content: "\e9f9";
-}
-.ai-orcid:before {
-  content: "\e9d9";
-}
-.ai-orcid-square:before {
-  content: "\e9c3";
-}
-.ai-osf:before {
-  content: "\e9ef";
-}
-.ai-osf-square:before {
-  content: "\e931";
-}
+/* Icon size scale */
+.ai-1x  { font-size: 1em; }
+.ai-2x  { font-size: 2em; }
+.ai-3x  { font-size: 3em; }
+.ai-4x  { font-size: 4em; }
+.ai-5x  { font-size: 5em; }
+.ai-6x  { font-size: 6em; }
+.ai-7x  { font-size: 7em; }
+.ai-8x  { font-size: 8em; }
+.ai-9x  { font-size: 9em; }
+.ai-10x { font-size: 10em; }
 
-.ai-1x {
-  font-size: 1em;
+/* Academicons glyphs */
+.ai-google-scholar:before        { content: "\e9d4"; }
+.ai-google-scholar-square:before { content: "\e9f9"; }
+.ai-orcid:before                 { content: "\e9d9"; }
+.ai-orcid-square:before          { content: "\e9c3"; }
+.ai-osf:before                   { content: "\e9ef"; }
+.ai-osf-square:before            { content: "\e931"; }
+
+/* Icon link strip */
+a .ai, a .fa-brands {
+    color: var(--color-muted);
+    transition: color 0.18s ease, transform 0.18s ease;
+    border-bottom: none;
 }
-.ai-2x {
-  font-size: 2em;
-}
-.ai-3x {
-  font-size: 3em;
-}
-.ai-4x {
-  font-size: 4em;
-}
-.ai-5x {
-  font-size: 5em;
-}
-.ai-6x {
-  font-size: 6em;
-}
-.ai-7x {
-  font-size: 7em;
-}
-.ai-8x {
-  font-size: 8em;
-}
-.ai-9x {
-  font-size: 9em;
-}
-.ai-10x {
-  font-size: 10em;
+a:hover .ai, a:hover .fa-brands,
+a:focus .ai, a:focus .fa-brands {
+    color: var(--color-accent);
+    transform: translateY(-1px);
 }
 
 
+/* ============================================================
+   Responsive tweaks
+   ============================================================ */
+@media (max-width: 640px) {
+    body {
+        padding: 2rem 1.25rem 4rem;
+        font-size: 0.95rem;
+    }
+
+    h2 { font-size: 1.2rem; }
+
+    .col-sm-6 {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Stack photo below contact info on small screens */
+    .col-sm-6:last-child { text-align: center; }
+
+    img { max-width: 220px; margin: 0 auto; }
+}
